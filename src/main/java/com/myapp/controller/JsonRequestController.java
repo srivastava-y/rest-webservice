@@ -22,6 +22,7 @@ public class JsonRequestController {
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Student> getStudent(@PathVariable("id") int id) {
+		//studentService.checkConnection();
 		System.out.println("fetching User with user id : " + id);
 		Student st = studentService.findUserById(id);
 		if (st == null) {
@@ -48,16 +49,17 @@ public class JsonRequestController {
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Student> putStudent(@PathVariable("id") int id,
 			@RequestBody Student student) {
+		boolean flag=false;
 		Student st1 = studentService.updateStudent(id, student);
 		System.out.println("Name:" + st1.getName());
 		try {
-		boolean flag=(st1 != null);
-		if (!flag) {
-			return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
-		}
+		flag=(st1.equals(null));
 		}
 		catch (NullPointerException e){
-			System.out.println(e);
+			System.out.println("NPE caught");
+		}
+		if (flag) {
+			return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Student>(st1, HttpStatus.OK);
 	}

@@ -1,5 +1,5 @@
 C:\Users\srivastava.y\Desktop\eclipse luna\work\myapp\src\main\java\com\myapp\dao\StudentDao.java
 C:\Users\srivastava.y\Desktop\eclipse luna\work\myapp\src\main\java\com\myapp\model\Student.java
 C:\Users\srivastava.y\Desktop\eclipse luna\work\myapp\src\main\java\com\myapp\service\StudentService.java
-C:\Users\srivastava.y\Desktop\eclipse luna\work\myapp\src\main\java\com\myapp\utility\DerbyDB.java
+C:\Users\srivastava.y\Desktop\eclipse luna\work\myapp\src\main\java\com\myapp\utility\JdbcDerbyConnection.java
 C:\Users\srivastava.y\Desktop\eclipse luna\work\myapp\src\main\java\com\myapp\controller\JsonRequestController.java

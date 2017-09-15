@@ -1,11 +1,16 @@
 package com.myapp.service;
 
+import java.sql.SQLException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.myapp.model.Student;
+import com.myapp.utility.JdbcDerbyConnection;
 
 @Service
 public class StudentService {
+	
 	String json;
 	Student student1 = new Student("Yogi", 12, "Varanasi", "yogi@yogi.com");
 
@@ -17,6 +22,7 @@ public class StudentService {
 	}
 
 	public Student findUserById(int id) {
+		
 		System.out.println(" getting student rollno in my service class : "
 				+ student1.getRollNo());
 		if (id == student1.getRollNo()) {
@@ -37,5 +43,17 @@ public class StudentService {
 		}
 		return null;
 	}
+	
+	public void checkConnection(){
+		try {
+			JdbcDerbyConnection.getDbConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("now closing the connection.....");
+		JdbcDerbyConnection.closeDbConnection();
+	}
+	
 
 }
