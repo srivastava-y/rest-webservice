@@ -5,12 +5,14 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.myapp.dao.StudentDao;
 import com.myapp.model.Student;
 import com.myapp.utility.JdbcDerbyConnection;
 
 @Service
 public class StudentService {
-	
+	@Autowired
+	private StudentDao studentDao;
 	String json;
 	Student student1 = new Student("Yogi", 12, "Varanasi", "yogi@yogi.com");
 
@@ -22,6 +24,7 @@ public class StudentService {
 	}
 
 	public Student findUserById(int id) {
+		studentDao.queryTable();
 		
 		System.out.println(" getting student rollno in my service class : "
 				+ student1.getRollNo());
